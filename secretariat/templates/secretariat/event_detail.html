@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<a href="{% url 'secretariat:index' %}">Back to event list</a>
+	<h3>{{event.title | capfirst }}</h3>
+	<p> {{ event.start_date }} </p>
+	<h4>Description: </h4>
+	<p>{{ event.description }}</p>
+{% endblock %}
