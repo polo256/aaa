@@ -101,7 +101,7 @@ DATABASES = {
         'USER': 'aaacadem_pk',
         'PASSWORD': 'Max1n4',
         'HOST': '67.225.140.60',
-        #'PORT': 'Max1n4',
+        'PORT': '3306',
         
     }
 }
