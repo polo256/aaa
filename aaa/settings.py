@@ -97,11 +97,11 @@ DATABASES = {
        #'ENGINE': 'django.db.backends.sqlite3',
        #'NAME': (os.path.join(BASE_DIR, 'db.sqlite3')) ,
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'secretariat',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'aaacadem_secretariat',
+        'USER': 'aaacadem_pk',
+        'PASSWORD': 'Max1n4',
+        'HOST': '67.225.140.60',
+        #'PORT': 'Max1n4',
         
     }
 }
