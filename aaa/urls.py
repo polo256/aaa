@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from inventory import views
+#from inventory import views
 
 urlpatterns = [
     #r = regular expression
-    url(r'^$', views.index, name='index'),
-    url(r'^memberdb/', include('memberdb.urls')),
+    #url(r'^$', views.index, name='index'),
+ 
     url(r'^secretariat/', include('secretariat.urls')),
-    url(r'^inventory/', include('inventory.urls')),
+
 
     url(r'^admin/', admin.site.urls),
 
