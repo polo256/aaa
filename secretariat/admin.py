@@ -8,7 +8,6 @@ from django.forms import TextInput, Textarea
 from django.db import models
 from django.utils import timezone
 from django.http import HttpResponse
-from admin_highcharts.admin import HighchartsModelAdmin 
 
 #admin.site.site_header = 'Africa Agribusiness Academy'
 

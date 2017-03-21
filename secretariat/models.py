@@ -98,7 +98,7 @@ class Staff(models.Model):
 class Staffactivity(models.Model):
 	staff = models.ForeignKey('Staff', on_delete=models.CASCADE)
 	activity_date = models.DateField()
-	activity_end = models.DateField(null=True)
+	activity_end = models.DateField()
 	activity = models.TextField()
 	location = models.CharField(max_length=400)
 	country = models.ForeignKey('Chapter', on_delete=models.CASCADE)

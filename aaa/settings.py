@@ -35,10 +35,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
 
-    'memberdb.apps.MemberdbConfig',
-    'inventory',
     'secretariat',
-    'Mobile_App',    
+    'mobile_app',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

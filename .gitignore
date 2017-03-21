@@ -3,5 +3,7 @@
 __pycache__
 myvenv
 db.sqlite3
+inventory
+memberdb
 /static
 .DS_Store
