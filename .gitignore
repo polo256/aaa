@@ -2,6 +2,8 @@
 *~
 __pycache__
 myvenv
+inventory
+memberdb
 db.sqlite3
 inventory
 memberdb
