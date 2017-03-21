@@ -97,11 +97,11 @@ DATABASES = {
        #'ENGINE': 'django.db.backends.sqlite3',
        #'NAME': (os.path.join(BASE_DIR, 'db.sqlite3')) ,
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'secretariat',
-        'USER': 'aaacadem_pk',
-        'PASSWORD': 'Max1n4',
-        'HOST': 'username.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'NAME': 'polo256$secretariat',
+        'USER': 'polo256',
+        'PASSWORD': 'Maxine123',
+        'HOST': 'polo256.mysql.pythonanywhere-services.com',
+        #'PORT': '3306',
         
     }
 }
