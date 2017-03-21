@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'secretariat',
         'USER': 'aaacadem_pk',
         'PASSWORD': 'Max1n4',
-        'HOST': 'pythonanywhere.com',
+        'HOST': 'username.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         
     }
