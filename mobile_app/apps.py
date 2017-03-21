@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class MobileAppConfig(AppConfig):
-    name = 'Mobile_App'
-    verbose_name = 'Mobile App'
+    name = 'mobile_app'
+    verbose_name = 'mobile app'
