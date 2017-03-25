@@ -5,7 +5,7 @@ from . import views
 
 app_name = 'secretariat'
 
-admin.site.site_header = 'Africa Agribusiness Academy'
+
 urlpatterns = [
 	
 	#url(r'^$', views.index, name='index'),

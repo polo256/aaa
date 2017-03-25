@@ -40,6 +40,10 @@ class Event(models.Model):
 	def __str__(self):
 		return self.name
 
+	def count_events(self):
+		return str(name.count())
+
+
 
 
 class Chapter(models.Model):
@@ -151,8 +155,8 @@ class Member(models.Model):
 	sector = models.ForeignKey('Sector', on_delete=models.CASCADE)
 	sector_desk = models.ForeignKey('SectorDesk', default=1)
 	business_club = models.ForeignKey('BusinessClub', on_delete=models.CASCADE)
-	sub_status = models.BooleanField()
-	status = models.CharField(max_length=2, choices=MEMBER_CHOICES, default=10)
+	sub_status = models.BooleanField(verbose_name='Subscription')
+	status = models.CharField(max_length=2, choices=MEMBER_CHOICES, default=10, verbose_name='user status')
 	password = models.CharField(max_length=200, default='$2y$10$eM0VDmCiZq692kNgs4K5R.NFKFSQAkV0SkzAC7lW6Ib.iwy2LdvYu')
 	interest = models.ManyToManyField('MemberInterest', null=True, blank=True)
 
@@ -163,7 +167,7 @@ class Member(models.Model):
 
 class BcMeeting(models.Model):
 	business_club = models.ForeignKey('BusinessClub', on_delete=models.CASCADE)
-	meeting_date = models.DateField()
+	meeting_date = models.DateField(default=datetime.datetime.now)
 	secretary = models.CharField(max_length=200)
 	guest_speaker = models.CharField(max_length=200)
 	minutes = models.TextField()
@@ -192,6 +196,7 @@ class Partner(models.Model):
 	email = models.EmailField()
 	country = models.ForeignKey('Chapter')
 	speciality = models.ManyToManyField('MemberInterest')
+	created_at = models.DateTimeField(default=datetime.datetime.now, editable=False)
 
 
 

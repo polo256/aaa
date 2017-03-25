@@ -43,11 +43,14 @@ class EventAdmin(admin.ModelAdmin):
 			return "Upcoming"
 	number_participants.short_description='Participants'
 
+	def count_events(self, obj):
+		return obj.name.count()
+
 
 	def duration(self, obj):
 		start = datetime.datetime.strptime(str(obj.start_date), "%Y-%m-%d").date()
 		end = datetime.datetime.strptime(str(obj.end_date), "%Y-%m-%d").date()
-		period = (end-start).days
+		period = (end-start).days +1
 
 		if (period < 2):
 			return "1 day"
@@ -114,9 +117,9 @@ class ActivityAdmin(admin.ModelAdmin):
 		if obj.activity_end:
 			start = datetime.datetime.strptime(str(obj.activity_date), "%Y-%m-%d").date()
 			end = datetime.datetime.strptime(str(obj.activity_end), "%Y-%m-%d").date()
-			period = (end-start).days
+			period = (end-start).days + 1
 
-		if (period < 2):
+		if (period ==1):
 			return str(period) + " day"
 		else:
 			return str(period) + " days"
@@ -141,12 +144,18 @@ class MemberInline(admin.StackedInline):
 
 class MemberAdmin(admin.ModelAdmin):
 	list_display=['fullname', 'company', 'join_date', 'subscription_date', 'sub_status']
-	list_filter=['sub_status', 'status', 'subscription_date', 'chapter', 'sector', 'business_club',  'interest' ]
+	list_filter=['sub_status', 'status', 'chapter', 'sector_desk', 'business_club',  'interest' ]
 	search_fields=('fullname', 'company')
 	#inlines = [MemberInline]
 	#list_editable=('company')
 	list_per_page = 50
 	
+	fieldsets = [
+	(None, {'fields': ['fullname', 'join_date', 'subscription_date', 'chapter', 'town', 'email', 'company', 'phone', 'website', 'sector', 
+		'business_club', 'interest']}),
+	('Mobile App Specific', {'fields': ['sector_desk','status', 'company_logo', 'description']}),
+
+	]
 
 	filter_horizontal = ('interest',)
 
@@ -208,6 +217,7 @@ class PartnerAdmin(admin.ModelAdmin):
 	list_display = ['partner_name', 'contact', 'phone']
 	filter_horizontal = ('speciality',)
 	list_filter = ('speciality',)
+
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(Chapter, ChapterAdmin)

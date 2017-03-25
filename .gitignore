@@ -5,6 +5,7 @@ myvenv
 inventory
 memberdb
 db.sqlite3
+aaa/settings.py
 inventory
 memberdb
 /static

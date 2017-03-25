@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('secretariat', '0031_remove_member_sector_desk'),
-        ('Mobile_App', '0015_remove_sectordeskpost_sector_desk'),
+        ('mobile_app', '0015_remove_sectordeskpost_sector_desk'),
     ]
 
     operations = [

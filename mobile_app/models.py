@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from secretariat.models import Member, SectorDesk
 
 class Blog(models.Model):
-	member = models.ForeignKey(Member)
+	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=400)
 	img = models.CharField(max_length=200, null=True, blank=True)
 	blog = models.TextField()
@@ -27,13 +27,13 @@ class Feedback(models.Model):
 
 
 class Notice(models.Model):
-	member = models.ForeignKey(Member)
+	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=100)
 	notice = models.TextField()
 	attachment = models.CharField(max_length=200, null=True, blank=True)
-	attachment_type = models.CharField(max_length=10, null=True, blank=True)
-	name = models.CharField(max_length=100, null=True, blank=True)
-	status = models.IntegerField(default=1)
+	attachment_type = models.CharField(max_length=10, null=True, blank=True, editable=False)
+	name = models.CharField(max_length=100, null=True, blank=True, editable=False)
+	status = models.IntegerField(default=1, editable=False)
 	created_at = models.DateTimeField(default=datetime.datetime.now)
 
 	def __str__(self):
@@ -55,7 +55,7 @@ class NoticeComment(models.Model):
 
 class SectorDeskPost(models.Model):
 	sector_desk = models.ForeignKey(SectorDesk)
-	member = models.ForeignKey(Member, default=729, editable=False)
+	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=200)
 	post = models.TextField()
 	attachment = models.CharField(max_length=100, null=True, blank=True)
@@ -72,9 +72,9 @@ class SectorDeskPostComment(models.Model):
 	member = models.ForeignKey(Member)
 	comment = models.CharField(max_length=200)
 	attachment = models.CharField(max_length=100, null=True, blank=True)
-	attachment_type = models.CharField(max_length=10, null=True, blank=True)
-	name = models.CharField(max_length=100, null=True, blank=True)
-	status = models.IntegerField()
+	attachment_type = models.CharField(max_length=10, null=True, blank=True, editable=False)
+	name = models.CharField(max_length=100, null=True, blank=True, editable=False)
+	status = models.IntegerField(editable=False)
 	created_at = models.DateTimeField()
 
 	def __str__(self):
@@ -91,7 +91,7 @@ class Resource(models.Model):
 	title = models.CharField(max_length=200)
 	url = models.CharField(max_length=200)
 	description = models.TextField()
-	created_at=models.DateTimeField()
+	created_at=models.DateTimeField(default=datetime.datetime.now)
 
 	def __str__(self):
 		return self.title

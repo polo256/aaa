@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('secretariat', '0027_auto_20170318_1505'),
-        ('Mobile_App', '0001_initial'),
+        ('mobile_app', '0001_initial'),
     ]
 
     operations = [

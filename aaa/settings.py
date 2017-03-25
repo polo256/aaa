@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -34,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 
-
+    'admin_shortcuts',
     'secretariat',
     'mobile_app',    
     'django.contrib.admin',
@@ -77,6 +76,86 @@ TEMPLATES = [
         },
     },
 ]
+
+ADMIN_SHORTCUTS = [
+    {
+        #'title': '',
+        'shortcuts': [
+            {
+                'url': '/admin/secretariat/member',
+                'url_name': '{% url admin:index %}',
+                'title': 'Members',
+                'count_new': 'aaa.utils.count_members',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'user'
+            },
+            {
+                'url': '/admin/secretariat/bcmeeting',
+                'url_name': '{% url admin:index %}',
+                'title': 'BC Meetings',
+                'count_new': 'aaa.utils.count_meetings',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'notepad'
+            },
+            {
+                'url': '/admin/secretariat/event',
+                'url_name': '{% url admin:index %}',
+                'title': 'Events',
+                'count_new': 'aaa.utils.count_events',
+                'count': '30',
+                #'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'date',
+            },
+            {
+                'url': '/admin/mobile_app/notice',
+                'url_name': '{% url admin:index %}',
+                'title': 'Notices',
+                'count_new': 'aaa.utils.count_notices',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'flag'
+            },
+            {
+                'url': '/admin/mobile_app/resource',
+                'url_name': '{% url admin:index %}',
+                'title': 'Resources',
+                'count_new': 'aaa.utils.count_resources',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'archive'
+            },
+            {
+                'url': '/admin/mobile_app/sectordeskpost',
+                'url_name': '{% url admin:index %}',
+                'title': 'Discussions',
+                'count_new': 'aaa.utils.count_discussions',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'blog'
+            },
+            {
+                'url': '/admin/mobile_app/feedback',
+                'url_name': '{% url admin:index %}',
+                'title': 'App Feedback',
+                'count_new': 'aaa.utils.count_feedback',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'delivery2'
+            },
+            {
+                'url': '/admin/secretariat/partner',
+                'url_name': '{% url admin:index %}',
+                'title': 'Partners',
+                'count_new': 'aaa.utils.count_partners',
+                'has_perms': 'project.utils.has_perms_to_orders',
+                'class': 'user',
+            },
+
+        ]
+    },
+]
+
+ADMIN_SHORTCUTS_SETTINGS = {
+    'hide_app_list': False,
+    'open_new_window': False,
+}
+
 
 
 # Specifie path to components root (you need to use absolute path)

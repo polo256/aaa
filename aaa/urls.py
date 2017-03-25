@@ -16,7 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-
+admin.site.site_header = 'Africa Agribusiness Academy'
+admin.site.site_title = "AAA "
+admin.site.index_title = "Administration"
 urlpatterns = [
     #r = regular expression
     #url(r'^$', views.index, name='index'),
