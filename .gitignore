@@ -3,6 +3,7 @@
 __pycache__
 myvenv
 inventory
+aaa/settings.py
 memberdb
 db.sqlite3
 inventory
