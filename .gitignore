@@ -3,11 +3,11 @@
 __pycache__
 myvenv
 inventory
-aaa/settings.py
+/aaa/settings.py
 memberdb
 db.sqlite3
-aaa/settings.py
 inventory
 memberdb
+aaa
 /static
 .DS_Store
