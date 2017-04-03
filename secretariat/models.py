@@ -10,9 +10,9 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 STATUS_CHOICES = (
-    ('t', 'Training'),
-    ('v', 'Company Visit'),
-    ('e', 'Exhibition'),
+    ('1', 'Training'),
+    ('2', 'Company Visit'),
+    ('3', 'Exhibition'),
 )
 
 MEMBER_CHOICES = (
@@ -24,17 +24,19 @@ MEMBER_CHOICES = (
 
 # Create your models here.
 class Event(models.Model):
-	chapter = models.ForeignKey('Chapter',  on_delete=models.CASCADE)
+	chapter = models.ForeignKey('Chapter',  on_delete=models.CASCADE, verbose_name="Select Country")
 	sector = models.ForeignKey('Sector', on_delete=models.CASCADE, null=True, blank=True)
 	trainer = models.ForeignKey('Trainer', null=True, on_delete=models.CASCADE, blank=True)
 	name = models.CharField(max_length = 200)
 	venue = models.CharField(max_length=400)
 	start_date = models.DateField('Start Date')
 	end_date = models.DateField('End Date')
+	attachment = models.CharField(max_length=200, null=True, blank=True)
+	attachment_type = models.CharField(max_length=20, null=True, blank=True)
 	description = models.TextField()
-	status = models.CharField(max_length=1, null=True, choices=STATUS_CHOICES, verbose_name='Event Type', default="t")
+	status = models.CharField(max_length=1, null=True, choices=STATUS_CHOICES, verbose_name='Event Type', default=1)
 	participants = models.ManyToManyField('Member', blank=True, related_name='participants')
-	#created_by = models.ForeignKey(User, editable=False)
+	created_at = models.DateField(default=datetime.datetime.now)
 	added_by = models.ForeignKey('Member', default=729, related_name='added_by')
 
 	def __str__(self):
@@ -141,8 +143,9 @@ class Member(models.Model):
 #	YES_NO_CHOICES = ((NO, 'Inactive'), (YES, 'Active'))
 
 	fullname = models.CharField(max_length=200, verbose_name='Full Name')
-	join_date = models.DateField(default=datetime.datetime.now)
+	join_date = models.DateField(default=datetime.datetime.now, verbose_name="Joined")
 	subscription_date = models.DateField(null=True, blank=True)
+	membership = models.DateField(null=True, blank=True)
 	chapter = models.ForeignKey('Chapter', on_delete=models.CASCADE)
 	town = models.CharField(max_length=200, null=True, blank=True)
 	email = models.EmailField(null=True, blank=True)
@@ -158,6 +161,7 @@ class Member(models.Model):
 	status = models.CharField(max_length=2, choices=MEMBER_CHOICES, default=10, verbose_name='user status')
 	password = models.CharField(max_length=200, default='$2y$10$eM0VDmCiZq692kNgs4K5R.NFKFSQAkV0SkzAC7lW6Ib.iwy2LdvYu')
 	interest = models.ManyToManyField('MemberInterest', null=True, blank=True)
+	notification_status = models.BooleanField(default=1)
 
 	def __str__(self):
 		return self.fullname

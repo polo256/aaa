@@ -1,6 +1,8 @@
 from secretariat.models import Event, Member, Partner, BcMeeting
 from mobile_app.models import Notice, Resource, Feedback, SectorDeskPost
 from django.utils import timezone
+import datetime
+
 
 
 class count_events():
@@ -13,6 +15,7 @@ class count_members():
 
 	def __str__(self):
 		return str(Member.objects.count())
+
 
 class count_partners():
 	def __str__(self):

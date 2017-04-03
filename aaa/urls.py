@@ -15,14 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.shortcuts import redirect
 
-admin.site.site_header = 'Africa Agribusiness Academy'
+admin.site.site_header = 'AAA Resource Center'
 admin.site.site_title = "AAA "
+admin.site.site_url=""
 admin.site.index_title = "Administration"
+
+
 urlpatterns = [
     #r = regular expression
     #url(r'^$', views.index, name='index'),
     url(r'^secretariat/', include('secretariat.urls')),
+    url(r'^$', lambda _: redirect('admin:index'), name='index'),
 
     url(r'^admin/', admin.site.urls),
 

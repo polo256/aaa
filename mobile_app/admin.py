@@ -11,8 +11,18 @@ class BlogAdmin(admin.ModelAdmin):
 	list_filter=['created_at']
 
 class NoticeAdmin(admin.ModelAdmin):
-	list_display=['title', 'member', 'created_at']
+	list_display=['title', 'member', 'created_at', 'isAttached']
 	list_filter=['created_at']
+
+	def isAttached(self, obj):
+		if(obj.attachment):
+			return True
+		else:
+			return False
+
+	isAttached.boolean = True
+	isAttached.short_description="Attachment?"
+
 
 class ResourceAdmin(admin.ModelAdmin):
 	list_display=['title', 'created_at']

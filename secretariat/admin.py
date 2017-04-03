@@ -143,7 +143,7 @@ class MemberInline(admin.StackedInline):
 	model = Member
 
 class MemberAdmin(admin.ModelAdmin):
-	list_display=['fullname', 'company', 'join_date', 'subscription_date', 'sub_status']
+	list_display=['fullname', 'company', 'join_date', 'subscription_date', 'sub_status', 'membership']
 	list_filter=['sub_status', 'status', 'chapter', 'sector_desk', 'business_club',  'interest' ]
 	search_fields=('fullname', 'company')
 	#inlines = [MemberInline]
@@ -151,7 +151,7 @@ class MemberAdmin(admin.ModelAdmin):
 	list_per_page = 50
 	
 	fieldsets = [
-	(None, {'fields': ['fullname', 'join_date', 'subscription_date', 'chapter', 'town', 'email', 'company', 'phone', 'website', 'sector', 
+	(None, {'fields': ['fullname', 'join_date', 'membership','subscription_date', 'chapter', 'town', 'email', 'company', 'phone', 'website', 'sector', 
 		'business_club', 'interest']}),
 	('Mobile App Specific', {'fields': ['sector_desk','status', 'company_logo', 'description']}),
 

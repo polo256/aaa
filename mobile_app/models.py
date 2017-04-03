@@ -3,6 +3,7 @@ import datetime
 from django.contrib.auth.models import User
 from secretariat.models import Member, SectorDesk
 
+
 class Blog(models.Model):
 	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=400)
@@ -30,7 +31,7 @@ class Notice(models.Model):
 	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=100)
 	notice = models.TextField()
-	attachment = models.CharField(max_length=200, null=True, blank=True)
+	attachment = models.FileField(upload_to='mobile_app', null=True, blank=True)
 	attachment_type = models.CharField(max_length=10, null=True, blank=True, editable=False)
 	name = models.CharField(max_length=100, null=True, blank=True, editable=False)
 	status = models.IntegerField(default=1, editable=False)
@@ -58,7 +59,7 @@ class SectorDeskPost(models.Model):
 	member = models.ForeignKey(Member, default=729)
 	title = models.CharField(max_length=200)
 	post = models.TextField()
-	attachment = models.CharField(max_length=100, null=True, blank=True)
+	attachment = models.FileField(upload_to='mobile_app', null=True, blank=True)
 	attachment_type = models.CharField(max_length=10, null=True, blank=True, editable=False)
 	name = models.CharField(max_length=100, null=True, blank=True, editable=False)
 	status = models.IntegerField(default=1, editable=False)
@@ -89,7 +90,7 @@ class Device(models.Model):
 
 class Resource(models.Model):
 	title = models.CharField(max_length=200)
-	url = models.CharField(max_length=200)
+	url = models.FileField(upload_to='mobile_app')
 	description = models.TextField()
 	created_at=models.DateTimeField(default=datetime.datetime.now)
 
