@@ -8,6 +8,5 @@ memberdb
 db.sqlite3
 inventory
 memberdb
-aaa
 /static
 .DS_Store

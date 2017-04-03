@@ -86,7 +86,6 @@ class SectorDesk(models.Model):
 class Staff(models.Model):
 	fullname = models.CharField(max_length=200)
 	mobile = models.CharField(max_length=30)
-	dob=models.DateField(null=True)
 	country_chapter = models.ForeignKey('Chapter', null=True, blank=True, on_delete=models.CASCADE)
 	position = models.CharField(max_length=300)
 
@@ -196,7 +195,6 @@ class Partner(models.Model):
 	email = models.EmailField()
 	country = models.ForeignKey('Chapter')
 	speciality = models.ManyToManyField('MemberInterest')
-	created_at = models.DateTimeField(default=datetime.datetime.now, editable=False)
 
 
 
