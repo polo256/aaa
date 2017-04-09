@@ -24,7 +24,7 @@ MEMBER_CHOICES = (
 
 # Create your models here.
 class Event(models.Model):
-	chapter = models.ForeignKey('Chapter',  on_delete=models.CASCADE, verbose_name="Select Country")
+	chapter = models.ForeignKey('Chapter',  on_delete=models.CASCADE, verbose_name="Select Country", null=True, blank=True)
 	sector = models.ForeignKey('Sector', on_delete=models.CASCADE, null=True, blank=True)
 	trainer = models.ForeignKey('Trainer', null=True, on_delete=models.CASCADE, blank=True)
 	name = models.CharField(max_length = 200)
